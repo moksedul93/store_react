@@ -1,0 +1,12 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer components {
+  .custom-hover-effect:hover .moveup {
+    transform: translateY(-70px);
+  }
+  .custom-hover-effect:hover .imgHover {
+    transform: scale(0.75);
+  }
+}
