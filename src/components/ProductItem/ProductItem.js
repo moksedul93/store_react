@@ -11,6 +11,7 @@ import iPhone6Image from "../../assets/iphone6.jpg";
 import iPhone7Image from "../../assets/iphone7.jpg";
 import iPhone8Image from "../../assets/iphone8.jpg";
 import { cartItem } from "../../redux/cart/actions";
+import { Link } from "react-router-dom";
 
 const imageMap = {
   1: iPhone1Image,
@@ -23,7 +24,7 @@ const imageMap = {
   8: iPhone8Image,
 };
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, viewMode }) => {
   const dispatch = useDispatch();
 
   const addToCart = () => {
@@ -43,29 +44,62 @@ const ProductItem = ({ product }) => {
   };
 
   return (
-    <div className="border p-4 hover:shadow-md hover:custom-hover-effect min-h-[300px] overflow-hidden">
-      <a href="#">
-        <img
-          src={imageMap[product.Title.split(" ")[1]]} // Assuming the Title format is consistent
-          alt={product.Title}
-          className="w-full h-[200px] object-contain mb-2 imgHover scale-100 transition-all"
-        />
-        <div className="relative">
-          <div className="moveup transition-all absolute w-full bottom-[-115px]">
-            <div className="flex justify-between items-center">
-              <h3 className="text-lg font-semibold">{product.Title}</h3>
-              <p className="text-lg font-bold">${product.Price}</p>
+    <>
+      {viewMode === true ? (
+        <div className="border p-4 hover:shadow-md hover:custom-hover-effect min-h-[300px] overflow-hidden">
+          <Link href="#">
+            <img
+              src={imageMap[product.Title.split(" ")[1]]} // Assuming the Title format is consistent
+              alt={product.Title}
+              className={`w-full h-[200px] object-contain mb-2 imgHover scale-100 transition-all`}
+            />
+            <div className="relative">
+              <div className="moveup transition-all absolute w-full bottom-[-115px]">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-lg font-semibold">{product.Title}</h3>
+                  <p className="text-lg font-bold">${product.Price}</p>
+                </div>
+                <button
+                  onClick={addToCart}
+                  className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
+                >
+                  Add to Cart
+                </button>
+              </div>
             </div>
-            <button
-              onClick={addToCart}
-              className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
-            >
-              Add to Cart
-            </button>
-          </div>
+          </Link>
         </div>
-      </a>
-    </div>
+      ) : (
+        <div className="border p-4 hover:shadow-md hover:custom-hover-effect overflow-hidden">
+          <Link href="#">
+            <div className="flex items-center gap-5">
+              <div>
+                <img
+                  src={imageMap[product.Title.split(" ")[1]]} // Assuming the Title format is consistent
+                  alt={product.Title}
+                  className={`h-[200px] object-contain mb-2 w-auto`}
+                />
+              </div>
+              <div className="relative w-full">
+                <div className="text-lg font-semibold flex justify-between">
+                  <span>Title:</span> <span>{product.Title}</span>
+                </div>
+                <div className="text-lg font-bold flex justify-between mt-2">
+                  <span>Price:</span> <span>${product.Price}</span>
+                </div>
+                <button
+                  onClick={addToCart}
+                  className="bg-blue-500 text-white px-4 py-2 rounded mt-4 float-end"
+                >
+                  Add to Cart
+                </button>
+              </div>
+              {/* </div> */}
+            </div>
+          </Link>
+        </div>
+      )}
+    </>
   );
 };
 

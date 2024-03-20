@@ -60,6 +60,7 @@ export default function Header() {
   };
   const handleClickOutside = (event) => {
     if (
+      isMobileMenuOpen &&
       mobileMenuRef.current &&
       !mobileMenuRef.current.contains(event.target)
     ) {
@@ -75,26 +76,40 @@ export default function Header() {
   }, []);
   return (
     <div className="mx-auto">
-      <nav className="flex items-center justify-between flex-wrap bg-[#262626] p-6">
+      <nav className="flex items-center justify-between flex-wrap bg-[#262626] p-4 md:p-6">
         <div className="flex items-center flex-shrink-0 text-white mr-6">
           <a href="/" className="font-semibold text-xl tracking-tight">
             Store
           </a>
         </div>
         <div className="block lg:hidden">
-          <button
-            onClick={toggleMobileMenu}
-            className="flex items-center px-3 py-2 border rounded text-white border-white hover:text-white hover:border-white"
-          >
-            <svg
-              className="fill-current h-3 w-3"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
+          <div className="flex gap-3">
+            <button
+              ref={mobileMenuRef}
+              onClick={toggleMobileMenu}
+              className="flex items-center p-2 border rounded text-white border-white hover:text-white hover:border-white"
             >
-              <title>Menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
-          </button>
+              <svg
+                className="fill-current h-3 w-3"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <title>Menu</title>
+                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+              </svg>
+            </button>
+            <Link
+              to="/cart"
+              className="inline-block p-2 leading-none border rounded text-white border-white hover:border-[#ddd] hover:text-white relative"
+            >
+              <CiShoppingCart />
+              {cartItemCount > 0 && (
+                <span className="bg-red-500 text-white rounded-full px-2 py-1 absolute top-0 right-0 -mt-2 -mr-2">
+                  {cartItemCount}
+                </span>
+              )}
+            </Link>
+          </div>
         </div>
         <div
           className={`${
@@ -115,7 +130,7 @@ export default function Header() {
             </Link>
             <Link
               to="/cart"
-              className="inline-block text-xl px-4 py-2 leading-none border rounded text-white border-white hover:border-[#ddd] hover:text-white mt-4 lg:mt-0 relative"
+              className="hidden md:inline-block text-xl px-4 py-2 leading-none border rounded text-white border-white hover:border-[#ddd] hover:text-white mt-4 lg:mt-0 relative"
             >
               <CiShoppingCart />
               {cartItemCount > 0 && (

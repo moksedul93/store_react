@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Submenu({ items, isOpen, index, label, route }) {
-  console.log(items, "items");
   return (
     <ul
       className={`bg-[#2c3840] list-none absolute w-[165px] left-0 top-8 md:left-[150px] md:top-[-13px] z-10 border border-white ${

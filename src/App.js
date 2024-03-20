@@ -7,6 +7,7 @@ import Home from "./components/home/home";
 import Contact from "./components/contact/contact";
 import Laptop from "./components/laptop/laptop";
 import Accessories from "./components/accessories/accessories";
+import ErrorPage from "./components/error";
 
 function App() {
   return (
@@ -21,6 +22,10 @@ function App() {
           <Route path="/mobile" element={<ProductList />} />
           <Route path="/laptop" element={<Laptop />} />
           <Route path="/accessories" element={<Accessories />} />
+          <Route path="category/mobile" element={<ProductList />} />
+          <Route path="category/laptop" element={<Laptop />} />
+          <Route path="category/accessories" element={<Accessories />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </>
