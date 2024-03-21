@@ -30,7 +30,7 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ### `Project host link:`
-Open [https://65fc7036b4bf3c500f6b32b0--lucky-zuccutto-90170a.netlify.app/](click here) to view it in your browser.
+Open Open [[http://localhost:3000](https://65fc7036b4bf3c500f6b32b0--lucky-zuccutto-90170a.netlify.app/)](click here) to view it in your browser.
 
 ## Learn More
 
