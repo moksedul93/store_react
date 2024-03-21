@@ -42,7 +42,7 @@ export default function Header() {
         );
       } else {
         return (
-          <li className="lg:inline-block">
+          <li className="lg:inline-block font-semibold">
             <Link
               key={key}
               to={`/${value.toLowerCase()}`}

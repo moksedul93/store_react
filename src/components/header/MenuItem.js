@@ -26,7 +26,7 @@ function MenuItem({ label, items, index }) {
       <ul className="m-0 p-0 md:inline-block">
         <Link
           to="#"
-          className={`block my-2 md:my-[2px] md:mb-0  text-white pr-4 ${
+          className={`block my-2 md:my-[2px] md:mb-0 font-semibold  text-white pr-4 ${
             index === 2 && label === "Category" ? "mt-0" : ""
           }`}
         >

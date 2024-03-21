@@ -43,9 +43,9 @@ const ProductList = () => {
         <LoaderDualBall />
       ) : (
         <>
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center md:mt-12">
             {/* Display loader while data is loading */}
-            <h2 className="text-xl md:text-2xl my-3">Product List:</h2>
+            <h2 className="text-xl md:text-2xl my-3 ">Product List:</h2>
 
             {/* Button to toggle view mode */}
             <div>

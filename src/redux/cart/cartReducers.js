@@ -9,6 +9,7 @@ const initialState = localStorage.getItem("cart")
   : {};
 const cartReducer = (state = initialState, action) => {
   switch (action.type) {
+    // products add to cart 
     case ADD_TO_CART:
       const existingItem = state[action.payload.id];
       if (existingItem) {
@@ -32,6 +33,7 @@ const cartReducer = (state = initialState, action) => {
           },
         };
       }
+      // increase product quanity 
     case INCREASE_QUANTITY:
       return {
         ...state,
@@ -43,6 +45,7 @@ const cartReducer = (state = initialState, action) => {
             state[action.payload.productId].price,
         },
       };
+      // decrease product quanity 
     case DECREASE_QUANTITY:
       const updatedQuantity = state[action.payload.productId].quantity - 1;
       if (updatedQuantity <= 0) {

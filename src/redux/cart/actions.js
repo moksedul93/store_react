@@ -1,3 +1,4 @@
+// define all action payloads
 import {
   ADD_TO_CART,
   DECREASE_CART_ITEM_COUNT,

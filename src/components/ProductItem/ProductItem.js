@@ -47,6 +47,7 @@ const ProductItem = ({ product, viewMode }) => {
   return (
     <>
       {viewMode === true ? (
+        // grid view
         <div className="border p-4 hover:shadow-md hover:custom-hover-effect min-h-[300px] overflow-hidden">
           <Link href="#">
             <img
@@ -74,6 +75,7 @@ const ProductItem = ({ product, viewMode }) => {
           </Link>
         </div>
       ) : (
+        // list view
         <div className="border p-4 hover:shadow-md hover:custom-hover-effect overflow-hidden">
           <Link href="#">
             <div className="flex items-center gap-5">
@@ -85,12 +87,13 @@ const ProductItem = ({ product, viewMode }) => {
                 />
               </div>
               <div className="relative w-full">
-                <div className="text-sm md:text-lg  flex justify-between">
-                  <span>Title:</span>{" "}
-                  <span className="lg:font-semibold">{product.Title}</span>
+                <div className="text-sm md:text-lg  text-end">
+                  <span className="lg:font-semibold">
+                    {product.Title} <small>({product.Year})</small>
+                  </span>
                 </div>
-                <div className="text-sm lg:text-lg  flex justify-between mt-2">
-                  <span>Price:</span> <span>${product.Price}</span>
+                <div className="text-sm lg:text-lg  text-end mt-2">
+                  <span>${product.Price}</span>
                 </div>
                 <button
                   onClick={addToCart}
@@ -99,7 +102,6 @@ const ProductItem = ({ product, viewMode }) => {
                   Add to Cart
                 </button>
               </div>
-              {/* </div> */}
             </div>
           </Link>
         </div>
