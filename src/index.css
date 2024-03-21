@@ -1,12 +1,55 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+@import "typeface-roboto";
+body {
+  font-family: "Roboto", sans-serif;
+}
 
 @layer components {
-  .custom-hover-effect:hover .moveup {
-    transform: translateY(-70px);
+  .container-xl {
+    width: 1200px;
   }
-  .custom-hover-effect:hover .imgHover {
-    transform: scale(0.75);
+  .loading-1 {
+    animation: loading-1 0.6s ease infinite;
+  }
+
+  .loading-2 {
+    animation: loading-2 0.6s ease infinite;
+  }
+}
+
+@keyframes loading-1 {
+  0% {
+    left: 0;
+  }
+
+  50% {
+    left: 50%;
+  }
+
+  to {
+    left: 0;
+  }
+}
+
+@keyframes loading-2 {
+  0% {
+    left: 50%;
+    z-index: 1;
+  }
+
+  49% {
+    z-index: 1;
+  }
+
+  50% {
+    left: 0;
+    z-index: 10;
+  }
+
+  to {
+    left: 50%;
+    z-index: 10;
   }
 }

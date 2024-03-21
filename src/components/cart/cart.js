@@ -30,16 +30,16 @@ const Cart = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="container xl:container-xl mx-auto">
       {cart.length === 0 ? (
         <div className="flex justify-center flex-col items-center w-full h-screen text-2xl">
           <span>No product in cart</span>
-          <span className="text-lg underline text-[#4ab866] mt-5">
+          <span className="text-lg underline text-[#a67c52] mt-5">
             <Link to="/mobile">Return to shop</Link>
           </span>
         </div>
       ) : (
-        <div className="px-4 md:px-0">
+        <div className="px-4 xl:px-0">
           <h2 className="text-2xl text-center my-10 md:my-20">
             Shopping Cart:
           </h2>
@@ -86,7 +86,10 @@ const Cart = () => {
                     />
                   </div>
                   <div className="w-full md:w-[60%] text-ellipsis overflow-hidden whitespace-nowrap">
-                    <span className="ps-2 ">{item.title}</span>{" "}
+                    <span className="ps-2 ">
+                      {item.title}
+                      <small className="ml-1">({item.year})</small>
+                    </span>{" "}
                   </div>
                   <div className="w-full md:w-[10%] text-start">
                     <span className="ml-2">${item.price}</span>{" "}

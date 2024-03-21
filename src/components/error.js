@@ -2,7 +2,7 @@ import React from "react";
 
 function ErrorPage() {
   return (
-    <div className=" container mx-auto">
+    <div className=" container xl:container-xl mx-auto">
       <div className="flex justify-center items-center w-full h-screen flex-col">
         <h1 className="text-2xl md:text-3xl">404 Not Found</h1>
         <p className="md:text-xl mt-3">

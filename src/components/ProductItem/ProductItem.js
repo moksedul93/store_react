@@ -7,9 +7,9 @@ import iPhone2Image from "../../assets/iphone2.jpg";
 import iPhone3Image from "../../assets/iphone3.png";
 import iPhone4Image from "../../assets/iphone4.webp";
 import iPhone5Image from "../../assets/iphone5.jpg";
-import iPhone6Image from "../../assets/iphone6.jpg";
+import iPhone6Image from "../../assets/iphone6.webp";
 import iPhone7Image from "../../assets/iphone7.jpg";
-import iPhone8Image from "../../assets/iphone8.jpg";
+import iPhone8Image from "../../assets/iphone8.webp";
 import { cartItem } from "../../redux/cart/actions";
 import { Link } from "react-router-dom";
 
@@ -36,6 +36,7 @@ const ProductItem = ({ product, viewMode }) => {
     const productData = {
       id: productId, // Assuming the product ID is unique
       title: product.Title,
+      year: product.Year,
       price: parseFloat(product.Price), // Convert price to number
       imageUrl: imageUrl,
     };
@@ -53,19 +54,22 @@ const ProductItem = ({ product, viewMode }) => {
               alt={product.Title}
               className={`w-full h-[200px] object-contain mb-2 imgHover scale-100 transition-all`}
             />
-            <div className="relative">
-              <div className="moveup transition-all absolute w-full bottom-[-115px]">
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg font-semibold">{product.Title}</h3>
-                  <p className="text-lg font-bold">${product.Price}</p>
-                </div>
-                <button
-                  onClick={addToCart}
-                  className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
-                >
-                  Add to Cart
-                </button>
+
+            <div className="w-full mt-7">
+              <div className="flex justify-between items-center">
+                <h3 className="text-lg font-semibold">
+                  {product.Title}{" "}
+                  <small className="font-normal">({product.Year})</small>{" "}
+                </h3>
+
+                <p className="text-lg font-normal">${product.Price}</p>
               </div>
+              <button
+                onClick={addToCart}
+                className="bg-[#a67c52] hover:bg-[#8e673f] transition-all w-full text-white px-4 py-2 rounded mt-4"
+              >
+                Add to Cart
+              </button>
             </div>
           </Link>
         </div>
@@ -81,15 +85,16 @@ const ProductItem = ({ product, viewMode }) => {
                 />
               </div>
               <div className="relative w-full">
-                <div className="text-lg font-semibold flex justify-between">
-                  <span>Title:</span> <span>{product.Title}</span>
+                <div className="text-sm md:text-lg  flex justify-between">
+                  <span>Title:</span>{" "}
+                  <span className="lg:font-semibold">{product.Title}</span>
                 </div>
-                <div className="text-lg font-bold flex justify-between mt-2">
+                <div className="text-sm lg:text-lg  flex justify-between mt-2">
                   <span>Price:</span> <span>${product.Price}</span>
                 </div>
                 <button
                   onClick={addToCart}
-                  className="bg-blue-500 text-white px-4 py-2 rounded mt-4 float-end"
+                  className="bg-[#a67c52] text-sm md:text-[16px] text-white px-4 py-2 rounded mt-4 float-end"
                 >
                   Add to Cart
                 </button>

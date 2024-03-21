@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { CiShoppingCart } from "react-icons/ci";
-import { GiSelfLove } from "react-icons/gi";
+import CiShoppingCart from "../../assets/CiShoppingCart.png";
 import MenuItem from "./MenuItem";
 import { fetchData } from "../../api/api";
 import { setMenu } from "../../redux/headerMenu/actions";
@@ -43,13 +42,15 @@ export default function Header() {
         );
       } else {
         return (
-          <Link
-            key={key}
-            to={`/${value.toLowerCase()}`}
-            className="block my-2 md:my-0 md:mt-[2px] lg:inline-block  text-white  hover:text-[#ddd] pr-4"
-          >
-            {value}
-          </Link>
+          <li className="lg:inline-block">
+            <Link
+              key={key}
+              to={`/${value.toLowerCase()}`}
+              className="block my-2 md:my-0 md:mt-[2px] lg:inline-block  text-white  pr-4"
+            >
+              {value}
+            </Link>
+          </li>
         );
       }
     });
@@ -75,73 +76,76 @@ export default function Header() {
     };
   }, []);
   return (
-    <div className="mx-auto">
-      <nav className="flex items-center justify-between flex-wrap bg-[#262626] p-4 md:p-6">
-        <div className="flex items-center flex-shrink-0 text-white mr-6">
-          <a href="/" className="font-semibold text-xl tracking-tight">
-            Store
-          </a>
-        </div>
-        <div className="block lg:hidden">
-          <div className="flex gap-3">
-            <button
-              ref={mobileMenuRef}
-              onClick={toggleMobileMenu}
-              className="flex items-center p-2 border rounded text-white border-white hover:text-white hover:border-white"
-            >
-              <svg
-                className="fill-current h-3 w-3"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
+    <div className="bg-[#262626] p-4 md:px-5 py-2.5">
+      <div className="container xl:container-xl mx-auto">
+        <nav className="flex items-center justify-between flex-wrap">
+          <div className="flex items-center flex-shrink-0 text-white mr-6">
+            <a href="/" className="font-semibold text-2xl tracking-tight">
+              Store
+            </a>
+          </div>
+          <div className="block lg:hidden">
+            <div className="flex gap-3">
+              <button
+                ref={mobileMenuRef}
+                onClick={toggleMobileMenu}
+                className="flex items-center py-2 px-2.5 border rounded text-white border-white hover:text-white hover:border-white"
               >
-                <title>Menu</title>
-                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-              </svg>
-            </button>
-            <Link
-              to="/cart"
-              className="inline-block p-2 leading-none border rounded text-white border-white hover:border-[#ddd] hover:text-white relative"
-            >
-              <CiShoppingCart />
-              {cartItemCount > 0 && (
-                <span className="bg-red-500 text-white rounded-full px-2 py-1 absolute top-0 right-0 -mt-2 -mr-2">
-                  {cartItemCount}
-                </span>
-              )}
-            </Link>
+                <svg
+                  className="fill-current h-3 w-3"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <title>Menu</title>
+                  <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+                </svg>
+              </button>
+              <Link
+                to="/cart"
+                className="inline-block p-[6px] md:p-2.5 leading-none border rounded-full text-white border-white hover:border-[#ddd] hover:text-white relative"
+              >
+                <img
+                  className="w-[18px]"
+                  src={CiShoppingCart}
+                  alt="CiShoppingCart"
+                />
+                {cartItemCount > 0 && (
+                  <span className="bg-[#a67c52] text-white rounded-full w-6 h-6 text-center leading-6 absolute top-0 right-0 -mt-2 -mr-3">
+                    {cartItemCount}
+                  </span>
+                )}
+              </Link>
+            </div>
           </div>
-        </div>
-        <div
-          className={`${
-            isMobileMenuOpen ? "block" : "hidden"
-          } w-full flex-grow lg:flex lg:items-center lg:w-auto lg:mt-1`}
-          ref={mobileMenuRef}
-        >
-          <div className="text-sm lg:flex-grow relative capitalize">
-            {/* menu items  */}
-            {menu && renderMenuItems(menu)}
+          <div
+            className={`${
+              isMobileMenuOpen ? "block" : "hidden"
+            } w-full flex-grow lg:flex lg:items-center lg:w-auto lg:mt-1`}
+          >
+            <div className="text-sm lg:flex-grow relative capitalize lg:text-left 2xl:text-center">
+              {/* menu items  */}
+              <ul>{menu && renderMenuItems(menu)}</ul>
+            </div>
+            <div>
+              <Link
+                to="/cart"
+                className="hidden lg:inline-block text-xl p-2.5 leading-none border rounded-full text-white border-white hover:border-[#ddd] hover:text-white mt-4 lg:mt-0 relative"
+              >
+                <img
+                  className="w-6"
+                  src={CiShoppingCart}
+                  alt="CiShoppingCart"
+                />
+                {cartItemCount > 0 && (
+                  <span className="bg-[#a67c52] text-white rounded-full w-7 h-7 text-center leading-7 absolute top-0 right-0 -mt-2 -mr-2">
+                    {cartItemCount}
+                  </span>
+                )}
+              </Link>
+            </div>
           </div>
-          <div>
-            <Link
-              to="#"
-              className="inline-block text-xl px-4 py-2 mr-3 leading-none border rounded text-white border-white hover:border-[#ddd] hover:text-white mt-4 lg:mt-0"
-            >
-              <GiSelfLove />
-            </Link>
-            <Link
-              to="/cart"
-              className="hidden md:inline-block text-xl px-4 py-2 leading-none border rounded text-white border-white hover:border-[#ddd] hover:text-white mt-4 lg:mt-0 relative"
-            >
-              <CiShoppingCart />
-              {cartItemCount > 0 && (
-                <span className="bg-red-500 text-white rounded-full px-2 py-1 absolute top-0 right-0 -mt-1 -mr-1">
-                  {cartItemCount}
-                </span>
-              )}
-            </Link>
-          </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </div>
   );
 }
