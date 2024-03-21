@@ -3,13 +3,13 @@ import { useDispatch } from "react-redux";
 
 // Mapping image names to their respective imports
 import iPhone1Image from "../../assets/iphone1.png";
-import iPhone2Image from "../../assets/iphone2.jpg";
+import iPhone2Image from "../../assets/iphone2.png";
 import iPhone3Image from "../../assets/iphone3.png";
-import iPhone4Image from "../../assets/iphone4.webp";
-import iPhone5Image from "../../assets/iphone5.jpg";
-import iPhone6Image from "../../assets/iphone6.webp";
-import iPhone7Image from "../../assets/iphone7.jpg";
-import iPhone8Image from "../../assets/iphone8.webp";
+import iPhone4Image from "../../assets/iphone4.png";
+import iPhone5Image from "../../assets/iphone5.png";
+import iPhone6Image from "../../assets/iphone6.png";
+import iPhone7Image from "../../assets/iphone7.png";
+import iPhone8Image from "../../assets/iphone8.png";
 import { cartItem } from "../../redux/cart/actions";
 import { Link } from "react-router-dom";
 
@@ -53,7 +53,7 @@ const ProductItem = ({ product, viewMode }) => {
             <img
               src={imageMap[product.Title.split(" ")[1]]} // Assuming the Title format is consistent
               alt={product.Title}
-              className={`w-full h-[200px] object-contain mb-2 imgHover scale-100 transition-all`}
+              className={`w-[130px] h-[220px] m-auto mb-2 imgHover scale-100 transition-all`}
             />
 
             <div className="w-full mt-7">
