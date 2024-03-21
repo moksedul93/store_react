@@ -56,7 +56,7 @@ const ProductItem = ({ product, viewMode }) => {
               className={`w-full h-[200px] object-contain mb-2 imgHover scale-100 transition-all`}
             />
 
-            <div className="w-[258px] mt-7">
+            <div className="w-full mt-7">
               <div className="flex justify-between items-center">
                 <h3 className="text-lg font-semibold">
                   {product.Title}{" "}
